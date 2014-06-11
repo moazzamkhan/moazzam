@@ -1,0 +1,26 @@
+Feature one - Show edinburgh data on google map
+
+Edinburgh Data - 
+http://uk-air.defra.gov.uk/data/flat_files?site_id=ED3
+
+Heatmap data - 
+
+id, Coordinates, Weight, Context
+
+
+
+Context - 
+
+ - Measurement table
+
+ - City, Country, data type(air quality index, NO3 or something else), time, date, 
+
+ - UK heatmap colors = ["rgba(0, 255, 255, 0)"/* first one should be transparent*/, "rgba(156, 255, 156, 1)", "rgba(49, 255, 0, 1)", "rgba(49, 207, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 207, 0, 1)", "rgba(255, 154, 0, 1)",
+				"rgba(255, 100, 100, 1)", "rgba(255, 0, 0, 1)", "rgba(153, 0, 0, 1)", "rgba(206, 48, 255, 1)" ]
+
+ 		From http://en.wikipedia.org/wiki/Air_quality_index#United_Kingdom
+				
+ - Air Quality Index Table
+
+
+ - A way to include live data
