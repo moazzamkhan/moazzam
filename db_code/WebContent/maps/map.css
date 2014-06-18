@@ -1,0 +1,52 @@
+#sensor-data .input-group {
+	margin: 2px 0;
+}
+
+#picture {
+	position: absolute;
+	left: -9999px;
+}
+
+.btn-super-danger {
+  color: #fff;
+  background-color: #800080;
+  border-color: #4B0082;
+}
+.btn-super-danger:hover,
+.btn-super-danger:focus,
+.btn-super-danger:active,
+.btn-super-danger.active,
+.open .dropdown-toggle.btn-super-danger {
+  color: #fff;
+  background-color: #4B0082;
+  border-color: #4B0082;
+}
+
+.btn-super-danger:active,
+.btn-super-danger.active,
+.open .dropdown-toggle.btn-super-danger {
+  background-image: none;
+}
+
+.btn-super-danger.disabled,
+.btn-super-danger[disabled],
+fieldset[disabled] .btn-super-danger,
+.btn-super-danger.disabled:hover,
+.btn-super-danger[disabled]:hover,
+fieldset[disabled] .btn-super-danger:hover,
+.btn-super-danger.disabled:focus,
+.btn-super-danger[disabled]:focus,
+fieldset[disabled] .btn-super-danger:focus,
+.btn-super-danger.disabled:active,
+.btn-super-danger[disabled]:active,
+fieldset[disabled] .btn-super-danger:active,
+.btn-super-danger.disabled.active,
+.btn-super-danger[disabled].active,
+fieldset[disabled] .btn-super-danger.active {
+  background-color: #800080;
+  border-color: #4B0082;
+}
+.btn-super-danger .badge {
+  color: #800080;
+  background-color: #fff;
+}

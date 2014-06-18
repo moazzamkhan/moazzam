@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.pesqol.dao.StudentDao;
 import com.pesqol.model.Student;
 
+@u
 public class StudentServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

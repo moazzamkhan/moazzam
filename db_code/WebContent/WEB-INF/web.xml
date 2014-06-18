@@ -8,6 +8,14 @@
 		<servlet-name>StudentServlet</servlet-name>
 		<servlet-class>com.pesqol.servlets.StudentServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ImageUploadTestServlet</servlet-name>
+		<servlet-class>com.pesqol.servlets.ImageUploadTestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImageUploadTestServlet</servlet-name>
+		<url-pattern>/uploadImage</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>StudentServlet</servlet-name>
 		<url-pattern>/student</url-pattern>

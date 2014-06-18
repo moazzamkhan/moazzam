@@ -1,5 +1,7 @@
 package com.pesqol.dao;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +44,9 @@ public class StudentDao {
 		return students;
 	}
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException,
+			IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException {
 		Student s = new Student();
 		s.setAge(12);
 		s.setName("moazzam");
@@ -51,6 +55,23 @@ public class StudentDao {
 		StudentDao sd = new StudentDao();
 
 		System.out.println(sd.addStudent(s));
-		System.out.println(sd.getAllStudent());
+		List<Student> list = sd.getAllStudent();
+
+		for (Student student : list) {
+			sd.printObject(student);
+		}
+	}
+
+	public void printObject(Object o) throws IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+		Method[] methods = o.getClass().getDeclaredMethods();
+
+		for (Method method : methods) {
+			String name = method.getName();
+			if (name.startsWith("get")) {
+				System.out.println(method.getName() + ":"
+						+ method.invoke(o, null));
+			}
+		}
 	}
 }

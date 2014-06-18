@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Heatmaps</title>
+<style>
+html,body,#map-canvas {
+	height: 100%;
+	/* 	width: 800px; */
+	margin: 0px;
+	padding: 0px
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization"></script>
+<script>
+	// Adding 500 Data Points
+	var map, pointarray, heatmap;
+
+	var loc_map = {}
+	var zoom = 13;
+	var heatMapData = [];
+	for (var i = 0; i < 100/* 1000/zoom */; i++) {
+		heatMapData.push({
+			location : new google.maps.LatLng(55.9520600 + (Math.random() / 50) - .005, -3.1964800 + Math.random() / 50 - .005),
+			weight : /* Math.random() * 1 */2
+		})
+	}
+	heatMapData.push({
+		location : new google.maps.LatLng(55.9520600 + (Math.random() / 50) - .005, -3.1964800 + Math.random() / 50 - .005),
+		weight : /* Math.random() * 1 */20
+	})
+	heatMapData.push({
+		location : new google.maps.LatLng(55.9520600 + (Math.random() / 50) - .005, -3.1964800 + Math.random() / 50 - .005),
+		weight : /* Math.random() * 1 */20
+	})
+
+	function initialize() {
+		var mapOptions = {
+			zoom : zoom + 5,
+			center : new google.maps.LatLng(55.95665425540941, -3.1683218479156494)
+		//55.9520600, -3.1964800)
+		};
+
+		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+		heatmap = new google.maps.visualization.HeatmapLayer({
+			data : heatMapData,
+			gradient : [ "rgba(0, 255, 255, 0)"/* first one should be transparent*/, "rgba(156, 255, 156, 0.6)", "rgba(49, 255, 0, 0.6)",
+					"rgba(49, 207, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(255, 207, 0, 0.6)", "rgba(255, 154, 0, 0.6)", "rgba(255, 100, 100, 0.6)",
+					"rgba(255, 0, 0, 0.6)", "rgba(153, 0, 0, 0.6)", "rgba(206, 48, 255, 0.6)" ],
+			//radius : 20,
+			opacity : 1
+
+		});
+		heatmap.setMap(map);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+	<div id="map-canvas"></div>
+</body>
+</html>

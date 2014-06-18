@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Observation JSP</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<!-- for google map -->
+<style>
+html,body,#map-canvas {
+	height: 600px;
+	width: 600px;
+	margin: 0px;
+	padding: 0px
+}
+</style>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization"></script>
+<script type="text/javascript">
+	function initialize() {
+		if ("geolocation" in navigator) {
+			/* geolocation is available */
+
+			var geo_options = {
+				enableHighAccuracy : true,
+				maximumAge : 30000,
+				timeout : 27000
+			};
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				var mapOptions = {
+					zoom : 16,
+					center : latlng
+				};
+
+				map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+				var marker = new google.maps.Marker({
+					position : latlng,
+					map : map
+				});
+
+				var infowindow = new google.maps.InfoWindow({
+					content : "You are here"
+				});
+				infowindow.open(map, marker);
+
+			}, null, geo_options);
+		} else {
+			/* geolocation IS NOT available */
+		}
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<form role="form" action="../observation" method="post">
+					<!-- sensor data -->
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter NO2 value" name="no2" class="form-control" />
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter CO value" name="co" class="form-control" />
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter SO2" name="so2" class="form-control" />
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter O3 value" name="o3" class="form-control" />
+
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter PM10 value" name="pm10" class="form-control" />
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter PM2.5 value" name="pm2p5" class="form-control" />
+							<span class="input-group-addon">
+								&mu;/m
+								<sup>3</sup>
+							</span>
+						</div>
+					</div>
+					<!-- location tsamp -->
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter latitude value" name="latitude" class="form-control" />
+							<span class="input-group-addon">Lat </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter longitude value" name="longitude" class="form-control" />
+							<span class="input-group-addon"> Lon </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" placeholder="Enter altitude value" name="altitude" class="form-control" />
+							<span class="input-group-addon"> Alt </span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>User categorization</label>
+						<div class="radio">
+							<label>
+								<input type="radio" name="user_categorization" value="Low" />
+								Low
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="user_categorization" value="Moderate" />
+								Moderate
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="user_categorization" value="High" />
+								High
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="user_categorization" value="Very High" />
+								Very High
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<textarea placeholder="Enter user comment" name="user_comments" class="form-control"></textarea>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-default">Add Observation</button>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<div id="map-canvas"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

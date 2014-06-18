@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Form</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+	<div style="display:none" id="user-input-form" class="form" style="width: 500px;">
+		<!-- Age group -->
+		<!-- Medical Condition -->
+		<!-- Low, Moderate, High, Very High -->
+		<!-- Message for what you have selected -->
+		<!-- O3(8 Hourly Mean), NO2(Hourly Mean), SO2(15 Min mean), PM10(24 hour mean), PM2.5 (24 hour mean) in u/m3 #Sliding-->
+		<!-- Upload Picture -->
+		<!-- Comments #Slider -->
+		<form action="#" method="get" role="form">
+			<div class="btn-group btn-group-justified">
+				<div class="btn-group"><button type="button" class="btn btn-success">Low</button></div>
+				<div class="btn-group"><button type="button" class="btn btn-warning">Moderate</button></div>
+				<div class="btn-group"><button type="button" class="btn btn-danger">High</button></div>
+				<div class="btn-group"><button type="button" class="btn btn-super-danger">Very High</button></div>
+			</div>
+			<div id="sensor-data">
+				<div class="input-group">
+					<span class="input-group-addon">
+						O
+						<sub>3</sub>
+					</span>
+					<input type="text" class="form-control" placeholder="Ozone (8 Hourly mean)">
+					<span class="input-group-addon">
+						&mu;/m
+						<sup>3</sup>
+					</span>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">
+						NO
+						<sub>2</sub>
+					</span>
+					<input type="text" class="form-control" placeholder="Nitrogen Oxide (Hourly mean)">
+					<span class="input-group-addon">
+						&mu;/m
+						<sup>3</sup>
+					</span>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">
+						SO
+						<sub>2</sub>
+					</span>
+					<input type="text" class="form-control" placeholder="Sulphur Dioxide (15 minutes mean)">
+					<span class="input-group-addon">
+						&mu;/m<sup>3</sup>
+					</span>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"> PM10 </span>
+					<input type="text" class="form-control" placeholder="PM10 Particles (24 Hour mean)">
+					<span class="input-group-addon">
+						&mu;/m
+						<sup>3</sup>
+					</span>
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"> PM2.5 </span>
+					<input type="text" class="form-control" placeholder="PM2.5 Particles (24 Hour mean)">
+					<span class="input-group-addon">
+						&mu;/m
+						<sup>3</sup>
+					</span>
+				</div>
+			</div>
+			<div id="user-comments">
+				<div class="input-group">
+					<textarea class="form-control" placeholder="Your comments..."></textarea>
+				</div>
+			</div>
+			<div class="">
+				<input id="picture" type="file" />
+				<button id="picture-upload-button" class="btn btn-success  btn-block">Upload an Image</button>
+				<button class="btn btn-primary btn-block">Submit</button>
+			</div>
+		</form>
+
+	</div>
+	<script type="text/javascript">
+		$("#picture-upload-button").click(function() {
+			$("#picture").click();
+		});
+
+		$("#user-comments .summary").click(function() {
+			$("#user-comments .input-group").slideDown();
+		});
+	</script>
+</body>
+</html>
